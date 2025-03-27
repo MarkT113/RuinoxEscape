@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638779171370000000
-    m_Hash: 4170724717
+      ticks: 638786686870000000
+    m_Hash: 1257020503
   m_LockFileStatus:
     m_FilePath: /Volumes/Old/RuinoxEscape/RuinoxEscapeGame/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638779172130000000
-    m_Hash: 25741901
+      ticks: 638786686880000000
+    m_Hash: 3361434272
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -367,12 +367,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.ide.rider@3.0.34
+- packageId: com.unity.ide.rider@3.0.35
   testable: 0
   isDirectDependency: 1
-  version: 3.0.34
+  version: 3.0.35
   source: 1
-  resolvedPath: /Volumes/Old/RuinoxEscape/RuinoxEscapeGame/Library/PackageCache/com.unity.ide.rider@3.0.34
+  resolvedPath: /Volumes/Old/RuinoxEscape/RuinoxEscapeGame/Library/PackageCache/com.unity.ide.rider@3.0.35
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -456,13 +456,13 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638651995659960000
+  datePublishedTicks: 638779086412770000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.rider@3.0/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: 700eb86ebc7b9f72d760e2e1c740fc5e2fd6a54b
+    revision: 52cd6800886cb6c849f5c908665829f1f8cca705
     path: 
   unityLifecycle:
     version: 3.0.34
@@ -3816,6 +3816,7 @@ m_ResolvedPackages:
     - 9.1.1
     - 9.1.2
     - 9.1.3
+    - 9.2.0
     - 10.0.0-pre.1
     - 10.0.0-pre.2
     - 10.0.0
@@ -3830,6 +3831,7 @@ m_ResolvedPackages:
     - 10.2.0
     compatible:
     - 9.1.3
+    - 9.2.0
     recommended: 9.1.3
     deprecated: []
   dependencies:
@@ -4079,6 +4081,7 @@ m_ResolvedPackages:
     - 8.0.3
     - 8.0.4
     - 8.0.5
+    - 8.1.0
     - 9.0.0-pre.1
     - 9.0.0-pre.2
     - 9.0.0
@@ -4089,6 +4092,7 @@ m_ResolvedPackages:
     - 10.1.0
     compatible:
     - 8.0.5
+    - 8.1.0
     recommended: 8.0.5
     deprecated: []
   dependencies:
@@ -4317,6 +4321,7 @@ m_ResolvedPackages:
     - 9.0.3
     - 9.0.4
     - 9.0.5
+    - 9.1.0
     - 10.0.0-pre.1
     - 10.0.0-pre.2
     - 10.0.0
@@ -4330,6 +4335,7 @@ m_ResolvedPackages:
     - 10.1.0
     compatible:
     - 9.0.5
+    - 9.1.0
     recommended: 9.0.5
     deprecated: []
   dependencies:
@@ -4914,6 +4920,7 @@ m_ResolvedPackages:
     - 8.0.2
     - 8.0.3
     - 8.0.4
+    - 8.1.0
     - 9.0.0-pre.1
     - 9.0.0-pre.2
     - 9.0.0
@@ -4927,6 +4934,7 @@ m_ResolvedPackages:
     - 9.1.0
     compatible:
     - 8.0.4
+    - 8.1.0
     recommended: 8.0.4
     deprecated: []
   dependencies:
