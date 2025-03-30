@@ -391,6 +391,7 @@
 -analyzer:"/Volumes/Old/UnityInstall/2022.3.60f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Volumes/Old/UnityInstall/2022.3.60f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scenes/ChangeScene.cs"
+"Assets/Scenes/CountdownTimer.cs"
 "Assets/Scenes/LevelLocations.cs"
 "Assets/Scenes/PlayerMovement.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
