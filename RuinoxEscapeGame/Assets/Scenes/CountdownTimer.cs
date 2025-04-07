@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -22,7 +23,7 @@ public class CountdownTimer : MonoBehaviour
             {
                 timeRemaining -= Time.deltaTime;
             }
-            else if (timeRemaining < 0)
+            else
             {
                 timeRemaining = 0;
                 timerText.color = Color.red;
@@ -36,5 +37,25 @@ public class CountdownTimer : MonoBehaviour
                 timerText.text = "Timer: " + timeRemaining.ToString();
             }*/
         }
+    }
+
+    private void Awake()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void PauseTimer()
+    {
+        timerPaused = true;
+    }
+
+    public void ResumeTimer()
+    {
+        timerPaused = false;
+    }
+
+    public void ResetTimer()
+    {
+        timeRemaining = 600f;
     }
 }

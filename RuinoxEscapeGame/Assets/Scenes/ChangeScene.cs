@@ -9,13 +9,12 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene(index);
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
