@@ -7,14 +7,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-    public float groundCheckRadius = 0.2f;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-    public float horizontalMoveInput;
-    public float verticalMoveInput;
-
+    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private Vector2 boxSize = new Vector2(0.2f, 0.001f);
+    [SerializeField] private Vector2 offset = new Vector2(0, -0.84f);
+    [SerializeField] private LayerMask groundLayer;
+    
+    private float horizontalMoveInput;
+    private float verticalMoveInput;
     private int currentGameLevel;
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -24,8 +24,11 @@ public class PlayerMovement : MonoBehaviour
     {
         currentGameLevel = SceneManager.GetActiveScene().buildIndex;
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
         rb.freezeRotation = true;
+        if (currentGameLevel != 2)
+        {
+            rb.gravityScale = 0f;
+        }
     }
 
     void Update()
@@ -35,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             verticalMoveInput = Input.GetAxis("Vertical");
         else if (currentGameLevel == 2)
         {
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            isGrounded = Physics2D.OverlapBox((Vector2)transform.position + offset, boxSize, 0, groundLayer);
             if (isGrounded && Input.GetKeyDown(KeyCode.Space))
                 isJumping = true;
         }
@@ -57,5 +60,18 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        DrawBox();
+    }
+
+    void DrawBox()
+    {
+        Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position + (Vector3)offset, Quaternion.Euler(0, 0, 0), Vector3.one);
+        Gizmos.matrix = rotationMatrix;
+        Gizmos.DrawWireCube(Vector3.zero, boxSize);
     }
 }
