@@ -395,6 +395,7 @@
 "Assets/Scenes/ControlButtons.cs"
 "Assets/Scenes/CountdownTimer.cs"
 "Assets/Scenes/LevelLocations.cs"
+"Assets/Scenes/OxygenController.cs"
 "Assets/Scenes/PlayerMovement.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
