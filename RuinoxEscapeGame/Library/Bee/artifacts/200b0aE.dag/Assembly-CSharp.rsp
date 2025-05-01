@@ -395,11 +395,16 @@
 "Assets/Scenes/ControlButtons.cs"
 "Assets/Scenes/CountdownTimer.cs"
 "Assets/Scenes/GameData.cs"
-"Assets/Scenes/GameManager.cs"
+"Assets/Scenes/GameManagerScript.cs"
 "Assets/Scenes/LevelLocations.cs"
 "Assets/Scenes/OxygenController.cs"
 "Assets/Scenes/PlayerMovement.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
+"Assets/_Project/Scripts/BackendModels/userData.cs"
+"Assets/_Project/Scripts/Managers/AudioManager.cs"
+"Assets/_Project/Scripts/Managers/DataManager.cs"
+"Assets/_Project/Scripts/Managers/GameManager.cs"
+"Assets/_Project/Scripts/Managers/UIManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+
