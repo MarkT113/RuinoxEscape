@@ -14,6 +14,7 @@ public class OxygenController : MonoBehaviour
     {
         get => instance; set => instance = value;
     }
+    
     private void Awake()
     {
         if (instance == null)
@@ -27,6 +28,7 @@ public class OxygenController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
     void Start()
     {
         currentOxygenLevel = PlayerPrefs.GetInt("OxygenLevel", 100);
@@ -44,7 +46,7 @@ public class OxygenController : MonoBehaviour
     public void UpdateOxygenText()
     {
         if (oxygenText == null) FindOxygenText();
-        else oxygenText.text = "Oxygen: " + currentOxygenLevel.ToString();
+        if (oxygenText != null) oxygenText.text = "Oxygen: " + currentOxygenLevel.ToString();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

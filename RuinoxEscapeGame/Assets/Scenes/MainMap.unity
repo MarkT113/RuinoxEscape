@@ -217,10 +217,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Timer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7981dfc269d4a48f38e3a44b97ee7bf2, type: 2}
+  m_sharedMaterial: {fileID: -1242865179101793204, guid: 7981dfc269d4a48f38e3a44b97ee7bf2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -244,8 +244,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1786,7 +1786,6 @@ GameObject:
   - component: {fileID: 1752289457}
   - component: {fileID: 1752289460}
   - component: {fileID: 1752289459}
-  - component: {fileID: 1752289458}
   m_Layer: 5
   m_Name: TimerText (1)
   m_TagString: Untagged
@@ -1813,21 +1812,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2021, y: -105}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1752289458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752289456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14bfc3494c237475a8eebf0c9a853998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeRemaining: 60
-  timerPaused: 1
-  timerText: {fileID: 1752289459}
 --- !u!114 &1752289459
 MonoBehaviour:
   m_ObjectHideFlags: 0

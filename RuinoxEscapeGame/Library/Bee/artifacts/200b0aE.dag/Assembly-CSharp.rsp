@@ -394,6 +394,8 @@
 "Assets/Scenes/ChangeScene.cs"
 "Assets/Scenes/ControlButtons.cs"
 "Assets/Scenes/CountdownTimer.cs"
+"Assets/Scenes/GameData.cs"
+"Assets/Scenes/GameManager.cs"
 "Assets/Scenes/LevelLocations.cs"
 "Assets/Scenes/OxygenController.cs"
 "Assets/Scenes/PlayerMovement.cs"
