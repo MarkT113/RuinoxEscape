@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameData
 {
-    private static float currentTime = 570f;
+    /*private static float currentTime = 570f;
     private static int currentScore = 1436;
     private static bool isNewGame = false;
     private static int currentGameScene = 1;
@@ -20,5 +21,20 @@ public class GameData
     private GameData()
     {
         // Read from database/server or locally/shared-pref
-    }
+    }*/
+    
+    public static int id;
+    public static string username = "Mark";
+    public static bool hasActiveGame = false;
+    public static int currentSceneIndex = 1;
+    public static float playerPositionX = 0f;
+    public static float playerPositionY = 0f;
+    public static float currentTimer = 120f;
+    public static int currentOxygenLevel = 100;
+    public static int[] minigamesStatus = {0, 0, 0}; // Array to check for successfully completed levels
+    public static int dashCharges = 3; // Number of dash attemps remaining
+    public static int difficultyLevel = 3; // 1 = Easy, 2 = Medium, 3 = Hard
+    public static readonly Dictionary<int, float> difficultyTimes = new Dictionary<int, float> {{1, 360}, {2, 240}, {3, 120}}; // 1 = 6min, 2 = 4min, 3 = 2min
+    public static float? bestTime = null;
+    public static int highScore = 0;
 }

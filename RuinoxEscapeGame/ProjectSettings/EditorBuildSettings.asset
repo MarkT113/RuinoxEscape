@@ -5,37 +5,37 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/Initialization.unity
     guid: f4ff6f4e746c74893b60330c5c7c3daf
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/LandingPage.unity
     guid: c5166470d5cb249dea6a792851bfbf30
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/MainMap.unity
     guid: fa616a87e49b5404e9c97316dbde5074
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/Minigame1.unity
     guid: ddd4f241b13ca448d9bcc7eb46e0ffbe
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/Minigame2.unity
     guid: 14b2b619a3bda4e4d862384c87e053b2
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/Minigame3.unity
     guid: 36d9bf6aba14a4526a2260598c8f093a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Landing.unity
     guid: 0c102da8e626348409ee1f5b236a5c4a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMap.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Platformer.unity
     guid: 2b4baf422375d48399556f1ef55731d4
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Racing.unity
     guid: c976811060b80413b96345226961b824
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Shooter.unity
     guid: 22b8d164eb99f47d1b8479bf6b8752a0
   m_configObjects:

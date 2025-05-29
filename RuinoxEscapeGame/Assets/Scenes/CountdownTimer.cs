@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] private float timeRemaining = 60f;
-    private bool isTimerPaused = true;
+    private bool isTimerPaused = false;
     private bool isTimerVisible;
     
     public static CountdownTimer Instance {get; private set;}
@@ -31,7 +31,7 @@ public class CountdownTimer : MonoBehaviour
     
     void Start()
     {
-        // timeRemaining = .....       based on game difficulty or saved data
+        timeRemaining = GameData.currentTimer;
         timerText.color = Color.green;
     }
 
@@ -73,16 +73,17 @@ public class CountdownTimer : MonoBehaviour
 
     public void ResetTimer()
     {
-        timeRemaining = 600f; // Set depending on game difficulty
         isTimerPaused = true;
         isTimerVisible = false;
+        timeRemaining = GameData.difficultyTimes[GameData.difficultyLevel];
     }
     
     private void OnTimerEnd()
     {
-        winScreen.SetActive(true);
+        // Similar to quitting the game But you reset everything!
+        /*winScreen.SetActive(true);
         SceneManager.LoadScene(0);
-        winScreen.SetActive(false);
+        winScreen.SetActive(false);*/
     }
 
     public void SetTimerVisibility(bool selectedVisibility)

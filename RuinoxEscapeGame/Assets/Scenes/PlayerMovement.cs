@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float jumpForce = 7f;
-    [SerializeField] private Vector2 boxSize = new Vector2(0.2f, 0.001f);
-    [SerializeField] private Vector2 offset = new Vector2(0, -0.84f);
+    [SerializeField] private Vector2 boxSize = new Vector2(0.55f, 0.001f);
+    [SerializeField] private Vector2 offset = new Vector2(0, -0.88f);
     [SerializeField] private LayerMask groundLayer;
     
     private float horizontalMoveInput;

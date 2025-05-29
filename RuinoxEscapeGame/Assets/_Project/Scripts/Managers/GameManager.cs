@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     // --- Singleton Pattern ---
     private static GameManager _instance;
-    public static GameManager Instance
+    public static GameManager Instance 
     {
         get
         {
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         // --- Enforce Singleton ---
-        if (_instance != null && _instance != this)
+        if (_instance == null)
         {
             Debug.LogWarning("Duplicate GameManager detected. Destroying newcomer.");
             Destroy(gameObject); // Destroy duplicate instances
