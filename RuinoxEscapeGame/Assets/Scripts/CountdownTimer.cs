@@ -47,8 +47,8 @@ public class CountdownTimer : MonoBehaviour
             {
                 timeRemaining = 0;
                 timerText.color = Color.red;
-                ResetTimer();
-                OnTimerEnd();
+                //ResetTimer();
+                //OnTimerEnd();
             }
             UpdateTimer();
         }
