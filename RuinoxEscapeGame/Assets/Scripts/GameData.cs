@@ -37,4 +37,25 @@ public class GameData
     public static readonly Dictionary<int, float> difficultyTimes = new Dictionary<int, float> {{1, 360}, {2, 240}, {3, 120}}; // 1 = 6min, 2 = 4min, 3 = 2min
     public static float? bestTime = null;
     public static int highScore = 0;
+
+    public void saveData(int sceneNum, float  posX, float posY, float timeRemaining, int oxLevel, int oyLevel)
+    {
+        currentSceneIndex = sceneNum;
+        playerPositionX = posX;
+        playerPositionY = posY;
+        currentTimer = timeRemaining;
+        currentOxygenLevel = oxLevel;
+        //dashCharges = 3;
+    }
+
+    public void resetData()
+    {
+        currentSceneIndex = 1;
+        playerPositionX = 0f;
+        playerPositionY = 0f;
+        currentTimer = difficultyTimes[difficultyLevel];
+        currentOxygenLevel = 100;
+        minigamesStatus = {0, 0, 0};
+        dashCharges = 3;
+    }
 }

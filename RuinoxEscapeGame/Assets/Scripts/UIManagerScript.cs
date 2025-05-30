@@ -19,6 +19,7 @@ public class GameManagerScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
     void Start()
     {
         

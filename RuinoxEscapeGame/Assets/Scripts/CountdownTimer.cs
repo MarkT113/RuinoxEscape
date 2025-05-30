@@ -50,11 +50,11 @@ public class CountdownTimer : MonoBehaviour
                 //ResetTimer();
                 //OnTimerEnd();
             }
-            UpdateTimer();
+            UpdateTimerDisplay();
         }
     }
 
-    void UpdateTimer()
+    void UpdateTimerDisplay()
     {
         int minutes = Mathf.FloorToInt(timeRemaining / 60);
         int seconds = Mathf.FloorToInt(timeRemaining % 60);
