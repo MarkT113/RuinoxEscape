@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 boxSize = new Vector2(0.55f, 0.001f);
     [SerializeField] private Vector2 offset = new Vector2(0, -0.88f);
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private SpriteRenderer gameMap;
     
     private float horizontalMoveInput;
     private float verticalMoveInput;
@@ -23,23 +24,39 @@ public class PlayerMovement : MonoBehaviour
     private bool moveDown;
     private bool moveLeft;
     private bool moveRight;
-    
+    private Vector2 playerSize;
+    private float playerHalfWidth, playerHalfHeight;
+    private float minBoundaryX, maxBoundaryX, minBoundaryY, maxBoundaryY;
+
     void Start()
     {
         currentGameLevel = SceneManager.GetActiveScene().buildIndex;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
-        if (currentGameLevel != 2)
+        if (currentGameLevel != 2 && currentGameLevel != 4)
         {
             rb.gravityScale = 0f;
         }
+        playerSize = GetComponent<SpriteRenderer>().bounds.size;
+        playerHalfHeight = playerSize.y / 2;
+        playerHalfWidth = playerSize.x / 2;
+        var gameMapBounds = gameMap.bounds;
+        minBoundaryX = gameMapBounds.min.x + playerHalfWidth;
+        maxBoundaryX = gameMapBounds.max.x - playerHalfWidth;
+        minBoundaryY = gameMapBounds.min.y + playerHalfHeight;
+        maxBoundaryY = gameMapBounds.max.y - playerHalfHeight;
     }
 
     void Update()
     {
+        // Check map boundaries
+        float newPosX = Mathf.Clamp(transform.position.x, minBoundaryX, maxBoundaryX);
+        float newPosY = Mathf.Clamp(transform.position.y, minBoundaryY, maxBoundaryY);
+        transform.position = new Vector2(newPosX, newPosY);
+        
         // Keyboard Movement
         horizontalMoveInput = Input.GetAxis("Horizontal");
-        if (currentGameLevel == 1 || currentGameLevel == 4)
+        if (currentGameLevel == 1 || currentGameLevel == 5)
             verticalMoveInput = Input.GetAxis("Vertical");
         else if (currentGameLevel == 2)
         {
@@ -73,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentGameLevel == 1 || currentGameLevel == 4)
+        if (currentGameLevel == 1 || currentGameLevel == 5)
             rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, verticalMoveInput * moveSpeed);
         else if (currentGameLevel == 2)
         {
@@ -127,6 +144,11 @@ public class PlayerMovement : MonoBehaviour
     public void EndMoveDown()
     {
         moveDown = false;
+    }
+
+    public void OnJumpButtonPress()
+    {
+        if (isGrounded) isJumping = true;
     }
     
     private void OnDrawGizmos()
