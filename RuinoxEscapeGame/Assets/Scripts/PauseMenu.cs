@@ -14,14 +14,16 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitToHome()
     {
-        // Save data (i.e. player position, scene/level number, time remaining, oxygen, dash attempts, .......)
-        
+        // Save data (i.e. player position, active scene/level number,
+        // time remaining, oxygen, dash attempts, .......)
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
 
-    public void MainMap()
+    public void QuitToMainMap()
     {
+        // Save data (i.e. player position, scene-related data
+        // [e.g. dash attempts remaining or health level or enemy damage or ...], .......)
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }

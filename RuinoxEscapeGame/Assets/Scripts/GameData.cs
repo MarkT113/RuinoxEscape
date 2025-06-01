@@ -55,7 +55,7 @@ public class GameData
         playerPositionY = 0f;
         currentTimer = difficultyTimes[difficultyLevel];
         currentOxygenLevel = 100;
-        minigamesStatus = {0, 0, 0};
+        //minigamesStatus = {0, 0, 0};
         dashCharges = 3;
     }
 }

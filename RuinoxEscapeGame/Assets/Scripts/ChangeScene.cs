@@ -6,18 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    public event Action<int> OnSceneChange;
+    
     public void LoadScreen(int index)
     {
+        OnSceneChange?.Invoke(index);
         SceneManager.LoadScene(index);
-    }
-
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
     }
 }

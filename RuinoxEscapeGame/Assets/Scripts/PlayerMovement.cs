@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isJumping;
+    private bool moveUp;
+    private bool moveDown;
+    private bool moveLeft;
+    private bool moveRight;
     
     void Start()
     {
@@ -33,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Keyboard Movement
         horizontalMoveInput = Input.GetAxis("Horizontal");
         if (currentGameLevel == 1 || currentGameLevel == 4)
             verticalMoveInput = Input.GetAxis("Vertical");
@@ -41,6 +46,28 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = Physics2D.OverlapBox((Vector2)transform.position + offset, boxSize, 0, groundLayer);
             if (isGrounded && Input.GetKeyDown(KeyCode.Space))
                 isJumping = true;
+        }
+        
+        // Button Movement
+        if (moveUp)
+        {
+            verticalMoveInput = moveSpeed;
+        }
+        else if (moveDown)
+        {
+            verticalMoveInput = -moveSpeed;
+        }
+        if (moveLeft)
+        {
+            horizontalMoveInput = -moveSpeed;
+            /* Else (i.e. moveLeft == false): horizontalMoveInput = 0...... which is already
+             automatically implied by the line 'Input.GetAxis("Horizontal")'. Thus, it is vital
+             to keep it (don't delete). If removed, the aforementioned code must be implemented.
+             Same case applies for vertical movement. */
+        }
+        else if (moveRight)
+        {
+            horizontalMoveInput = moveSpeed;
         }
     }
 
@@ -60,6 +87,46 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
+    }
+
+    public void StartMoveLeft()
+    {
+        moveLeft = true;
+    }
+    
+    public void EndMoveLeft()
+    {
+        moveLeft = false;
+    }
+    
+    public void StartMoveRight()
+    {
+        moveRight = true;
+    }
+    
+    public void EndMoveRight()
+    {
+        moveRight = false;
+    }
+    
+    public void StartMoveUp()
+    {
+        moveUp = true;
+    }
+    
+    public void EndMoveUp()
+    {
+        moveUp = false;
+    }
+    
+    public void StartMoveDown()
+    {
+        moveDown = true;
+    }
+    
+    public void EndMoveDown()
+    {
+        moveDown = false;
     }
     
     private void OnDrawGizmos()

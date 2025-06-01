@@ -8,26 +8,12 @@ using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour
 {
-    [SerializeField] private float timeRemaining = 60f;
+    private float timeRemaining;
     private bool isTimerPaused = false;
     private bool isTimerVisible;
     
-    public static CountdownTimer Instance {get; private set;}
     public TextMeshProUGUI timerText;
-    public GameObject winScreen;
-    
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    //public GameObject winScreen;
     
     void Start()
     {
