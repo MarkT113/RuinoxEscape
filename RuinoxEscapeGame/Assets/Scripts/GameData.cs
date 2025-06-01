@@ -29,14 +29,37 @@ public class GameData
     public static int currentSceneIndex = 1;
     public static float playerPositionX = 0f;
     public static float playerPositionY = 0f;
+    /*public static float platformerPositionX = 0f;
+    public static float platformerPositionY = 0f;
+    public static float runnerPositionX = 0f;
+    public static float runnerPositionY = 0f;
+    public static float combatPositionX = 0f;
+    public static float combatPositionY = 0f;
+    public static float shooterPositionX = 0f;
+    public static float shooterPositionY = 0f;*/
     public static float currentTimer = 120f;
     public static int currentOxygenLevel = 100;
+    public static bool isFirstLevelRevealed;
     public static int[] minigamesStatus = {0, 0, 0}; // Array to check for successfully completed levels
     public static int dashCharges = 3; // Number of dash attemps remaining
     public static int difficultyLevel = 3; // 1 = Easy, 2 = Medium, 3 = Hard
     public static readonly Dictionary<int, float> difficultyTimes = new Dictionary<int, float> {{1, 360}, {2, 240}, {3, 120}}; // 1 = 6min, 2 = 4min, 3 = 2min
     public static float? bestTime = null;
     public static int highScore = 0;
+
+
+
+    public static bool hasSpawnedPins;
+    
+    public static void LoadPinPositions(List<MapManager.LevelPin> lP)
+    {
+        
+    }
+
+    public static void SavePinPositions(List<MapManager.LevelPin> lP)
+    {
+        
+    }
 
     public void saveData(int sceneNum, float  posX, float posY, float timeRemaining, int oxLevel, int oyLevel)
     {
@@ -48,14 +71,17 @@ public class GameData
         //dashCharges = 3;
     }
 
+    // For 'Lose / Game Over'
     public void resetData()
     {
+        hasActiveGame = false;
         currentSceneIndex = 1;
         playerPositionX = 0f;
         playerPositionY = 0f;
         currentTimer = difficultyTimes[difficultyLevel];
         currentOxygenLevel = 100;
-        //minigamesStatus = {0, 0, 0};
+        isFirstLevelRevealed = false;
+        Array.Clear(minigamesStatus, 0,  minigamesStatus.Length);
         dashCharges = 3;
     }
 }

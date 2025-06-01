@@ -398,6 +398,7 @@
 "Assets/Scripts/CountdownTimer.cs"
 "Assets/Scripts/GameData.cs"
 "Assets/Scripts/LevelLocations.cs"
+"Assets/Scripts/MapManager.cs"
 "Assets/Scripts/OxygenController.cs"
 "Assets/Scripts/PauseMenu.cs"
 "Assets/Scripts/PlayerMovement.cs"
