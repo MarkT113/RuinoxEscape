@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isJumping;
+    private bool isFacingRight;
     private bool moveUp;
     private bool moveDown;
     private bool moveLeft;
@@ -32,11 +33,13 @@ public class PlayerMovement : MonoBehaviour
     {
         currentGameLevel = SceneManager.GetActiveScene().buildIndex;
         rb = GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true;
+        rb.freezeRotation = true; // Prevent object/sprite from rotating [... upon collisions and other such things]
+        // There must be a gravity force only in the platformer and combat/fighter games s.t. the player falls
         if (currentGameLevel != 2 && currentGameLevel != 4)
         {
             rb.gravityScale = 0f;
         }
+        // The following code sets the bounds/limits of the map
         playerSize = GetComponent<SpriteRenderer>().bounds.size;
         playerHalfHeight = playerSize.y / 2;
         playerHalfWidth = playerSize.x / 2;
@@ -49,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Check map boundaries
+        // Check map boundaries (ensure player does not go out of them)
         float newPosX = Mathf.Clamp(transform.position.x, minBoundaryX, maxBoundaryX);
         float newPosY = Mathf.Clamp(transform.position.y, minBoundaryY, maxBoundaryY);
         transform.position = new Vector2(newPosX, newPosY);
@@ -58,9 +61,13 @@ public class PlayerMovement : MonoBehaviour
         horizontalMoveInput = Input.GetAxis("Horizontal");
         if (currentGameLevel == 1 || currentGameLevel == 5)
             verticalMoveInput = Input.GetAxis("Vertical");
-        else if (currentGameLevel == 2)
+        else if (currentGameLevel == 2 || currentGameLevel == 4)
         {
+            // Create a box and checks whether it overlaps with any game object that is part of the ground Layer
+            // (i.e. is the player character on/touching the ground?)
             isGrounded = Physics2D.OverlapBox((Vector2)transform.position + offset, boxSize, 0, groundLayer);
+            // Sets the jump state to true if the player is on the ground and presses the jump key
+            // For button equivalent, see onJumpButtonPress() function
             if (isGrounded && Input.GetKeyDown(KeyCode.Space))
                 isJumping = true;
         }
@@ -80,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
             /* Else (i.e. moveLeft == false): horizontalMoveInput = 0...... which is already
              automatically implied by the line 'Input.GetAxis("Horizontal")'. Thus, it is vital
              to keep it (don't delete). If removed, the aforementioned code must be implemented.
-             Same case applies for vertical movement. */
+             Same case applies for vertical movement (and its corresponding line 'Input.GetAxis("Vertical")'). */
         }
         else if (moveRight)
         {
@@ -92,18 +99,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (currentGameLevel == 1 || currentGameLevel == 5)
             rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, verticalMoveInput * moveSpeed);
-        else if (currentGameLevel == 2)
+        else
         {
             rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
-            //if (!isJumping) return;
-            if (isJumping)
+            if ((currentGameLevel == 2 || currentGameLevel == 4) && isJumping)
             {
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 isJumping = false;
             }
         }
-        else
-            rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
     }
 
     public void StartMoveLeft()

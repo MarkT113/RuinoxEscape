@@ -39,7 +39,6 @@ public class GameData
     public static float shooterPositionY = 0f;*/
     public static float currentTimer = 120f;
     public static int currentOxygenLevel = 100;
-    public static bool isFirstLevelRevealed;
     public static int[] minigamesStatus = {0, 0, 0}; // Array to check for successfully completed levels
     public static int dashCharges = 3; // Number of dash attemps remaining
     public static int difficultyLevel = 3; // 1 = Easy, 2 = Medium, 3 = Hard
@@ -48,17 +47,24 @@ public class GameData
     public static int highScore = 0;
 
 
-
     public static bool hasSpawnedPins;
+    public static bool isFirstLevelRevealed;
+    public static List<Vector2> pinPositions = new List<Vector2>(); // Get saved data
     
-    public static void LoadPinPositions(List<MapManager.LevelPin> lP)
+    /*public static void LoadPinPositions(List<MapPointsManager.LevelPin> lP)
     {
-        
-    }
+        for(int i = 0; i < 4; i++)
+        {
+            lP[i].position = pinPositions[i];
+        }
+    }*/
 
-    public static void SavePinPositions(List<MapManager.LevelPin> lP)
+    public static void SavePinPositions(List<Vector2> positions)
     {
-        
+        foreach (var pos in positions)
+        {
+            pinPositions.Add(pos);
+        }
     }
 
     public void saveData(int sceneNum, float  posX, float posY, float timeRemaining, int oxLevel, int oyLevel)
