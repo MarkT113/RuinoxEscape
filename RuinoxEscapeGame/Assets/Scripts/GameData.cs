@@ -51,19 +51,19 @@ public class GameData
     public static bool isFirstLevelRevealed;
     public static List<Vector2> pinPositions = new List<Vector2>(); // Get saved data
     
-    /*public static void LoadPinPositions(List<MapPointsManager.LevelPin> lP)
+    public static void LoadPinPositions(List<MapPointsManager.LevelPin> positions)
     {
         for(int i = 0; i < 4; i++)
         {
-            lP[i].position = pinPositions[i];
+            positions[i].position = pinPositions[i];
         }
-    }*/
+    }
 
-    public static void SavePinPositions(List<Vector2> positions)
+    public static void SavePinPositions(List<MapPointsManager.LevelPin> positions)
     {
         foreach (var pos in positions)
         {
-            pinPositions.Add(pos);
+            pinPositions.Add(pos.position);
         }
     }
 

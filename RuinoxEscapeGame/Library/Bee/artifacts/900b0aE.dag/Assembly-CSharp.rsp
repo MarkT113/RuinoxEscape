@@ -392,6 +392,11 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"/Volumes/Old/UnityInstall/2022.3.60f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Volumes/Old/UnityInstall/2022.3.60f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/OldProj/Scripts/BackendModels/userData.cs"
+"Assets/OldProj/Scripts/Managers/AudioManager.cs"
+"Assets/OldProj/Scripts/Managers/DataManager.cs"
+"Assets/OldProj/Scripts/Managers/GameManager.cs"
+"Assets/OldProj/Scripts/Managers/UIManager.cs"
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/ChangeScene.cs"
 "Assets/Scripts/ControlButtons.cs"
@@ -406,11 +411,6 @@
 "Assets/Scripts/UIManagerScript.cs"
 "Assets/Scripts/z.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
-"Assets/_Project/Scripts/BackendModels/userData.cs"
-"Assets/_Project/Scripts/Managers/AudioManager.cs"
-"Assets/_Project/Scripts/Managers/DataManager.cs"
-"Assets/_Project/Scripts/Managers/GameManager.cs"
-"Assets/_Project/Scripts/Managers/UIManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+

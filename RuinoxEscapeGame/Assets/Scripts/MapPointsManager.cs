@@ -1,71 +1,136 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using Random = UnityEngine.Random;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MapPointsManager : MonoBehaviour
 {
-    public GameObject pinParentObject;
-    public float detectionRadius;
-    public SpriteRenderer gameMap;
-    public SpriteRenderer player;
-
-    /* Although there is only one map points manager in the scene (and entire game!) and it may seem overkill,
-    I'm still using a singleton pattern to ensure there exists only one instance of this class. However,
-    this can make it harder to test/mock and lead to tight coupling (always assuming game manager exists,
-    other scripts are depend on the singleton instance).*/
-    public static MapPointsManager Instance {get; private set;}
-    
-    public static event Action OnPositionsInitialized; // Can remove static, but must change other scripts.
-
-    void Awake()
+    [System.Serializable]
+    public class LevelPin
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        /* Decided against making this game object persistent across scenes; very slightly better efficiency.
-        Downside being - obviously, as with anything else - having to reload it every time the main map is opened*/
-        //DontDestroyOnLoad(gameObject);
-        generatePositions();
-        OnPositionsInitialized?.Invoke();
+        public int levelNum;
+        public GameObject parentPointObject;
+        public Animator arrowAnimator;
+        public float detectionRadius;
+        public Vector2 position;
+    }
+    
+    public List<LevelPin> levelPins;
+    public SpriteRenderer mapSize;
+    public SpriteRenderer playerSize;
+    public GameObject player;
+
+    private int[] levelStatus => GameData.minigamesStatus;
+    private bool isFirstLevelRevealed => GameData.isFirstLevelRevealed;
+
+    void Start()
+    {
+        SetupPins();
     }
 
-    void generatePositions()
+    void SetupPins()
     {
         if (!GameData.hasSpawnedPins)
         {
             List<Vector2> usedPositions = new List<Vector2>();
-            float halfW = GetCombinedWidth(pinParentObject) / 2;
-            float halfH = GetCombinedHeight(pinParentObject) / 2;
-            for (int i = 0; i < 4; i++)
+            foreach (var pin in levelPins)
             {
                 Vector2 spawnPos;
                 do
                 {
-                    float x = Random.Range(gameMap.bounds.min.x + halfW, gameMap.bounds.max.x - halfW);
-                    float y = Random.Range(gameMap.bounds.min.y + halfH, gameMap.bounds.max.y - halfH);
+                    float halfW = GetCombinedWidth(pin.parentPointObject) / 2;
+                    float halfH = GetCombinedHeight(pin.parentPointObject) / 2;
+
+                    float x = Random.Range(mapSize.bounds.min.x + halfW, mapSize.bounds.max.x - halfW);
+                    float y = Random.Range(mapSize.bounds.min.y + halfH, mapSize.bounds.max.y - halfH);
                     spawnPos = new Vector2(x, y);
                 }
-                while (!checkPositionValidity(spawnPos, usedPositions));
+                while (!CheckPositionValidity(spawnPos, usedPositions));
+                pin.parentPointObject.transform.position = spawnPos;
+                pin.position = spawnPos;
                 usedPositions.Add(spawnPos);
             }
-            GameData.SavePinPositions(usedPositions);
+            GameData.SavePinPositions(levelPins);
             GameData.hasSpawnedPins = true;
+        }
+        else
+        {
+            GameData.LoadPinPositions(levelPins);
+        }
+        ApplyInitialVisibility();
+    }
+
+    void ApplyInitialVisibility()
+    {
+        for (int i = 0; i < levelPins.Count; i++)
+        {
+            if (!isFirstLevelRevealed)
+            {
+                if (i == 0) // Only show platformer halftone dots initially
+                {
+                    ShowHalftoneDots(levelPins[i], true);
+                    ShowArrow(levelPins[i], false);
+                }
+                else
+                {
+                    levelPins[i].parentPointObject.SetActive(false);
+                }
+            }
+            else
+            {
+                ShowHalftoneDots(levelPins[i], true);
+                ShowArrow(levelPins[i], true);
+            }
         }
     }
 
-    bool checkPositionValidity(Vector2 pos, List<Vector2> existing)
+    public void OnInteractButtonPress()
     {
-        foreach (var e in existing)
+        StartCoroutine(CheckProximity());
+    }
+    
+    IEnumerator CheckProximity()
+    {
+        LevelPin nearestPin = null;
+        for (int i = 0; i < levelPins.Count; i++)
         {
-            float minX = 2 * detectionRadius + player.bounds.size.x + 0.1f;
-            float minY = 2 * detectionRadius + player.bounds.size.y + 0.1f;
+            float dist = Vector2.Distance(player.transform.position, levelPins[i].parentPointObject.transform.Find("EntranceDots").position);
+            if (dist <= levelPins[i].detectionRadius)
+            {
+                nearestPin = levelPins[i];
+            }
+        }
+        if (nearestPin != null)
+        {
+            if (!isFirstLevelRevealed)
+            {
+                if (nearestPin.levelNum == 2)
+                {
+                    // Reveal all pins
+                    foreach (var pin in levelPins)
+                    {
+                        pin.parentPointObject.SetActive(true);
+                        ShowHalftoneDots(pin, true);
+                        yield return StartCoroutine(PlayArrowPopAnimation(pin));
+                        ShowArrow(pin, true);
+                    }
+                    GameData.isFirstLevelRevealed = true;
+                    SceneManager.LoadScene(nearestPin.levelNum);
+                }
+            }
+            else SceneManager.LoadScene(nearestPin.levelNum);
+        }
+    }
 
-            if (Mathf.Abs(pos.x - e.x) < minX && Mathf.Abs(pos.y - e.y) < minY)
-                return false;
+    bool CheckPositionValidity(Vector2 pos, List<Vector2> existingPositions)
+    {
+        for (int i = 0; i < existingPositions.Count; i++)
+        {
+            float minX = 2 * levelPins[i].detectionRadius + playerSize.bounds.size.x + 0.1f;
+            float minY = 2 * levelPins[i].detectionRadius + playerSize.bounds.size.y + 0.1f;
+            if (Mathf.Abs(pos.x - existingPositions[i].x) < minX && 
+                Mathf.Abs(pos.y - existingPositions[i].y) < minY) return false;
         }
         return true;
     }
@@ -94,5 +159,24 @@ public class MapPointsManager : MonoBehaviour
             if (top > maxY) maxY = top;
         }
         return maxY - minY;
+    }
+
+    void ShowHalftoneDots(LevelPin pin, bool show)
+    {
+        // referencing tagged dots child sprite
+        Transform dots = pin.parentPointObject.transform.Find("EntranceDots"); // Halftone dots
+        if (dots != null) dots.gameObject.SetActive(show);
+    }
+
+    void ShowArrow(LevelPin pin, bool show)
+    {
+        Transform arrow = pin.parentPointObject.transform.Find("PreviewPoint"); // Map arrow
+        if (arrow != null) arrow.gameObject.GetComponent<SpriteRenderer>().enabled = show;
+    }
+
+    IEnumerator PlayArrowPopAnimation(LevelPin pin)
+    {
+        if (pin.arrowAnimator != null) pin.arrowAnimator.Play("MapPointAnimation");
+        yield return null;
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -176,4 +176,4 @@ public class MapPoint : MonoBehaviour
             pin.pinAnimator.Play("PopAnimation");
         }
     }
-}
+}*/
