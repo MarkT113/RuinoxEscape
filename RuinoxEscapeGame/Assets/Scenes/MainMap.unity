@@ -721,7 +721,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.4660497, y: 4.4660497, z: 4.4660497}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4694e505c139b401ebbc3db26080a4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMap: {fileID: 311360219}
+  cameraBounds: {fileID: 0}
   playerPos: {fileID: 1231988981}
   smoothing: 5
 --- !u!1 &524337428
@@ -3659,6 +3659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a2128c1539a480a9816282b2c63fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneNum: 0
 --- !u!1 &1652017575
 GameObject:
   m_ObjectHideFlags: 0

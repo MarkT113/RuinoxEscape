@@ -40,16 +40,17 @@ public class GameData
     public static float currentTimer = 120f;
     public static int currentOxygenLevel = 100;
     public static int[] minigamesStatus = {0, 0, 0}; // Array to check for successfully completed levels
-    public static int dashCharges = 3; // Number of dash attemps remaining
     public static int difficultyLevel = 3; // 1 = Easy, 2 = Medium, 3 = Hard
     public static readonly Dictionary<int, float> difficultyTimes = new Dictionary<int, float> {{1, 360}, {2, 240}, {3, 120}}; // 1 = 6min, 2 = 4min, 3 = 2min
     public static float? bestTime = null;
     public static int highScore = 0;
-
-
+    
     public static bool hasSpawnedPins;
     public static bool isFirstLevelRevealed;
     public static List<Vector2> pinPositions = new List<Vector2>(); // Get saved data
+    
+    public static int dashFound = 3; // Number of dashes found (max. 3)
+    public static int dashChargesRemaining = 3; // Number of dash attemps remaining
     
     public static void LoadPinPositions(List<MapPointsManager.LevelPin> positions)
     {
@@ -67,7 +68,47 @@ public class GameData
         }
     }
 
-    public void saveData(int sceneNum, float  posX, float posY, float timeRemaining, int oxLevel, int oyLevel)
+    // For 'Quit to Home'
+    public void saveGameData(int sceneNum, float  posX, float posY, float timeRemaining, int oxLevel, int oyLevel)
+    {
+        /*currentSceneIndex = sceneNum;
+        playerPositionX = posX;
+        playerPositionY = posY;
+        currentTimer = timeRemaining;
+        currentOxygenLevel = oxLevel;
+        //dashCharges = 3;
+        public static int id;
+        public static string username = "Mark";
+        public static bool hasActiveGame = false;
+        public static int currentSceneIndex = 1;
+        public static float playerPositionX = 0f;
+        public static float playerPositionY = 0f;
+        public static float platformerPositionX = 0f;
+        public static float platformerPositionY = 0f;
+        public static float runnerPositionX = 0f;
+        public static float runnerPositionY = 0f;
+        public static float combatPositionX = 0f;
+        public static float combatPositionY = 0f;
+        public static float shooterPositionX = 0f;
+        public static float shooterPositionY = 0f;
+        public static float currentTimer = 120f;
+        public static int currentOxygenLevel = 100;
+        public static int[] minigamesStatus = {0, 0, 0}; // Array to check for successfully completed levels
+        public static int difficultyLevel = 3; // 1 = Easy, 2 = Medium, 3 = Hard
+        public static readonly Dictionary<int, float> difficultyTimes = new Dictionary<int, float> {{1, 360}, {2, 240}, {3, 120}}; // 1 = 6min, 2 = 4min, 3 = 2min
+        public static float? bestTime = null;
+        public static int highScore = 0;
+    
+        public static bool hasSpawnedPins;
+        public static bool isFirstLevelRevealed;
+        public static List<Vector2> pinPositions = new List<Vector2>(); // Get saved data
+    
+        public static int dashFound = 3; // Number of dashes found (max. 3)
+        public static int dashChargesRemaining = 3; // Number of dash attemps remaining*/
+    }
+    
+    // For 'Quit to Main Map (from level scene) / Quit to Home (from level scene)'
+    public void saveLevelData(int sceneNum, float  posX, float posY, float timeRemaining, int oxLevel, int oyLevel)
     {
         currentSceneIndex = sceneNum;
         playerPositionX = posX;
@@ -77,8 +118,8 @@ public class GameData
         //dashCharges = 3;
     }
 
-    // For 'Lose / Game Over'
-    public void resetData()
+    // For 'Lose / Game Over / Start New Game / Restart Game (either from main map or level scene)'
+    public void resetGameData()
     {
         hasActiveGame = false;
         currentSceneIndex = 1;
@@ -88,6 +129,20 @@ public class GameData
         currentOxygenLevel = 100;
         isFirstLevelRevealed = false;
         Array.Clear(minigamesStatus, 0,  minigamesStatus.Length);
-        dashCharges = 3;
+        dashChargesRemaining = 3;
+    }
+    
+    // For 'Upon Death / Restart Level (from level scene)'
+    public void resetLevelData(int SceneIndex)
+    {
+        hasActiveGame = false;
+        currentSceneIndex = 1;
+        playerPositionX = 0f;
+        playerPositionY = 0f;
+        currentTimer = difficultyTimes[difficultyLevel];
+        currentOxygenLevel = 100;
+        isFirstLevelRevealed = false;
+        Array.Clear(minigamesStatus, 0,  minigamesStatus.Length);
+        dashChargesRemaining = 3;
     }
 }

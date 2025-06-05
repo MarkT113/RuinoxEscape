@@ -5,31 +5,26 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer gameMap;
+    [SerializeField] private Collider2D cameraBounds;
     [SerializeField] private Transform playerPos;
     [SerializeField] private float smoothing = 5f;
-
-    private Camera cam;
-    private float camHalfWidth, camHalfHeight;
-    private float minBoundaryX, maxBoundaryX, minBoundaryY, maxBoundaryY;
+    private Vector3 targetCamPos;
 
     void Start()
     {
-        cam = GetComponent<Camera>();
-        camHalfHeight = cam.orthographicSize;
-        camHalfWidth = camHalfHeight * cam.aspect;
-        var gameMapBounds = gameMap.bounds;
-        minBoundaryX = gameMapBounds.min.x + camHalfWidth;
-        maxBoundaryX = gameMapBounds.max.x - camHalfWidth;
-        minBoundaryY = gameMapBounds.min.y + camHalfHeight;
-        maxBoundaryY = gameMapBounds.max.y - camHalfHeight;
+        Debug.Log(GetComponent<Camera>().orthographicSize);
+        Debug.Log(GetComponent<Camera>().aspect);
     }
     
     public void LateUpdate()
     {
-        var targetCamPos = playerPos.position - new Vector3(0, 0, 10);
-        targetCamPos.x = Mathf.Clamp(targetCamPos.x, minBoundaryX, maxBoundaryX);
-        targetCamPos.y = Mathf.Clamp(targetCamPos.y, minBoundaryY, maxBoundaryY);
+        if (cameraBounds.OverlapPoint(playerPos.position))
+            targetCamPos = playerPos.position - new Vector3(0, 0, 10);
+        else
+        {
+            targetCamPos = cameraBounds.ClosestPoint(playerPos.position);
+            targetCamPos = new Vector3(targetCamPos.x, targetCamPos.y, -10);
+        }
         transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
     }
 }

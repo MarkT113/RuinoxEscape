@@ -405,6 +405,7 @@
 "Assets/Scripts/LevelLocations.cs"
 "Assets/Scripts/MapPoint.cs"
 "Assets/Scripts/MapPointsManager.cs"
+"Assets/Scripts/MovingPlatformController.cs"
 "Assets/Scripts/OxygenController.cs"
 "Assets/Scripts/PauseMenu.cs"
 "Assets/Scripts/PlayerMovement.cs"

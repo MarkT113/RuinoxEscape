@@ -39,35 +39,43 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.gravityScale = 0f;
         }
-        // The following code sets the bounds/limits of the map
-        playerSize = GetComponent<SpriteRenderer>().bounds.size;
-        playerHalfHeight = playerSize.y / 2;
-        playerHalfWidth = playerSize.x / 2;
-        var gameMapBounds = gameMap.bounds;
-        minBoundaryX = gameMapBounds.min.x + playerHalfWidth;
-        maxBoundaryX = gameMapBounds.max.x - playerHalfWidth;
-        minBoundaryY = gameMapBounds.min.y + playerHalfHeight;
-        maxBoundaryY = gameMapBounds.max.y - playerHalfHeight;
+        // The following code sets the bounds/limits of the map (for all scenes that require it).
+        /* Note, as we a lot of other things, this can be done many other ways
+        (e.g. setting up colliders on all the sides of the map). */
+        if (currentGameLevel != 2 && currentGameLevel != 3)
+        {
+            playerSize = GetComponent<SpriteRenderer>().bounds.size;
+            playerHalfHeight = playerSize.y / 2;
+            playerHalfWidth = playerSize.x / 2;
+            var gameMapBounds = gameMap.bounds;
+            minBoundaryX = gameMapBounds.min.x + playerHalfWidth;
+            maxBoundaryX = gameMapBounds.max.x - playerHalfWidth;
+            minBoundaryY = gameMapBounds.min.y + playerHalfHeight;
+            maxBoundaryY = gameMapBounds.max.y - playerHalfHeight;
+        }
     }
 
     void Update()
     {
         // Check map boundaries (ensure player does not go out of them)
-        float newPosX = Mathf.Clamp(transform.position.x, minBoundaryX, maxBoundaryX);
-        float newPosY = Mathf.Clamp(transform.position.y, minBoundaryY, maxBoundaryY);
-        transform.position = new Vector2(newPosX, newPosY);
-        
+        if (currentGameLevel != 2 && currentGameLevel != 3)
+        {
+            float newPosX = Mathf.Clamp(transform.position.x, minBoundaryX, maxBoundaryX);
+            float newPosY = Mathf.Clamp(transform.position.y, minBoundaryY, maxBoundaryY);
+            transform.position = new Vector2(newPosX, newPosY);
+        }
+
         // Keyboard Movement
         horizontalMoveInput = Input.GetAxis("Horizontal");
         if (currentGameLevel == 1 || currentGameLevel == 5)
             verticalMoveInput = Input.GetAxis("Vertical");
         else if (currentGameLevel == 2 || currentGameLevel == 4)
         {
-            // Create a box and checks whether it overlaps with any game object that is part of the ground Layer
-            // (i.e. is the player character on/touching the ground?)
+            /* Creates a box and checks whether it overlaps with any game object that is part of the ground Layer
+            (i.e. is the player character on/touching the ground?). */
             isGrounded = Physics2D.OverlapBox((Vector2)transform.position + offset, boxSize, 0, groundLayer);
-            // Sets the jump state to true if the player is on the ground and presses the jump key
-            // For button equivalent, see onJumpButtonPress() function
+            /* Sets the jump state to true if the player is on the ground and presses the jump key. For button
+             equivalent, see onJumpButtonPress() function. */
             if (isGrounded && Input.GetKeyDown(KeyCode.Space))
                 isJumping = true;
         }

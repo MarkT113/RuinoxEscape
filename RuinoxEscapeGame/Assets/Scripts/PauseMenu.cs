@@ -38,6 +38,7 @@ public class PauseMenu : MonoBehaviour
     public void RestartLevel()
     {
         // Get/keep/retreieve/save/take the: time, oxygen, dash, ..........
+        GameData.currentTimer = CountdownTimer.Instance.timeRemaining;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }

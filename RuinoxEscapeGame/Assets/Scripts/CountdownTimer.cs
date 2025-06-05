@@ -8,15 +8,16 @@ using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour
 {
-    private float timeRemaining;
-    private bool isTimerPaused = false;
-    private bool isTimerVisible;
-    
     public TextMeshProUGUI timerText;
     //public GameObject winScreen;
-    
+    public float timeRemaining;
+    public bool isTimerPaused;
+    public static CountdownTimer Instance {get; private set;}
+
     void Start()
     {
+        if (Instance == null)
+            Instance = this;
         timeRemaining = GameData.currentTimer;
         timerText.color = Color.green;
     }
@@ -56,13 +57,6 @@ public class CountdownTimer : MonoBehaviour
     {
         isTimerPaused = false;
     }
-
-    public void ResetTimer()
-    {
-        isTimerPaused = true;
-        isTimerVisible = false;
-        timeRemaining = GameData.difficultyTimes[GameData.difficultyLevel];
-    }
     
     private void OnTimerEnd()
     {
@@ -70,12 +64,6 @@ public class CountdownTimer : MonoBehaviour
         /*winScreen.SetActive(true);
         SceneManager.LoadScene(0);
         winScreen.SetActive(false);*/
-    }
-
-    public void SetTimerVisibility(bool selectedVisibility)
-    {
-        isTimerVisible = selectedVisibility;
-        timerText.gameObject.SetActive(selectedVisibility);
     }
 
     public float GetTimeRemaining()
