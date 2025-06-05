@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public int sceneNum = SceneManager.GetActiveScene().buildIndex;
     public void Pause()
     {
         gameObject.SetActive(true);

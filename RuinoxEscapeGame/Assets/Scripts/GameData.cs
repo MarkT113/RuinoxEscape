@@ -29,14 +29,14 @@ public class GameData
     public static int currentSceneIndex = 1;
     public static float playerPositionX = 0f;
     public static float playerPositionY = 0f;
-    /*public static float platformerPositionX = 0f;
+    public static float platformerPositionX = 0f;
     public static float platformerPositionY = 0f;
     public static float runnerPositionX = 0f;
     public static float runnerPositionY = 0f;
     public static float combatPositionX = 0f;
     public static float combatPositionY = 0f;
     public static float shooterPositionX = 0f;
-    public static float shooterPositionY = 0f;*/
+    public static float shooterPositionY = 0f;
     public static float currentTimer = 120f;
     public static int currentOxygenLevel = 100;
     public static int[] minigamesStatus = {0, 0, 0}; // Array to check for successfully completed levels
