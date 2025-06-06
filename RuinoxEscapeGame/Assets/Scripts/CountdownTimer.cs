@@ -65,9 +65,4 @@ public class CountdownTimer : MonoBehaviour
         SceneManager.LoadScene(0);
         winScreen.SetActive(false);*/
     }
-
-    public float GetTimeRemaining()
-    {
-        return timeRemaining;
-    }
 }
