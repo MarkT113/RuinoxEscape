@@ -413,6 +413,7 @@
 "Assets/Scripts/Runner Level/CameraMovement.cs"
 "Assets/Scripts/Runner Level/CollisionManager.cs"
 "Assets/Scripts/Runner Level/DashController.cs"
+"Assets/Scripts/Runner Level/ObstacleManager.cs"
 "Assets/Scripts/Runner Level/ObstaclesSpawner.cs"
 "Assets/Scripts/UIManagerScript.cs"
 "Assets/Scripts/z.cs"

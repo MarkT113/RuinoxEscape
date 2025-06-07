@@ -7,17 +7,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float sensitivity = 3f; // To mimic GetAxis()
+    
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private Vector2 boxSize = new Vector2(0.55f, 0.001f);
     [SerializeField] private Vector2 offset = new Vector2(0, -0.88f);
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private SpriteRenderer gameMap;
-    
+
     private float horizontalMoveInput;
     private float verticalMoveInput;
     private int currentGameLevel;
     private Rigidbody2D rb;
+    private Animator playerAnimator;
     private bool isGrounded;
     private bool isJumping;
     private bool isFacingRight;
@@ -83,15 +86,18 @@ public class PlayerMovement : MonoBehaviour
         // Button Movement
         if (moveUp)
         {
-            verticalMoveInput = moveSpeed;
+            verticalMoveInput = Mathf.MoveTowards(verticalMoveInput, 1f, sensitivity * Time.deltaTime);
         }
         else if (moveDown)
         {
-            verticalMoveInput = -moveSpeed;
+            verticalMoveInput = Mathf.MoveTowards(verticalMoveInput, -1f, sensitivity * Time.deltaTime);
         }
+        else
+            verticalMoveInput = Mathf.MoveTowards(verticalMoveInput, 0f, sensitivity * Time.deltaTime);
         if (moveLeft)
         {
-            horizontalMoveInput = -moveSpeed;
+            horizontalMoveInput = Mathf.MoveTowards(horizontalMoveInput, -1f, sensitivity * Time.deltaTime);
+            //horizontalMoveInput = -moveSpeed;
             /* Else (i.e. moveLeft == false): horizontalMoveInput = 0...... which is already
              automatically implied by the line 'Input.GetAxis("Horizontal")'. Thus, it is vital
              to keep it (don't delete). If removed, the aforementioned code must be implemented.
@@ -99,8 +105,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (moveRight)
         {
-            horizontalMoveInput = moveSpeed;
+            horizontalMoveInput = Mathf.MoveTowards(horizontalMoveInput, 1f, sensitivity * Time.deltaTime);
         }
+        else
+            horizontalMoveInput = Mathf.MoveTowards(horizontalMoveInput, 0f, sensitivity * Time.deltaTime);
+        
+        playerAnimator.SetFloat("MoveX", horizontalMoveInput);
+        playerAnimator.SetFloat("MoveY", verticalMoveInput);
+        //playerAnimator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
     private void FixedUpdate()
