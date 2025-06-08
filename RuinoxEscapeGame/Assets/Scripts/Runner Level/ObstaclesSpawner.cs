@@ -16,9 +16,8 @@ public class ObstaclesSpawner : MonoBehaviour
 
     void Start()
     {
-        if (obstacles.Length == 0)
-            Destroy(gameObject);
         numOfObstacles = obstacles.Length;
+        if (numOfObstacles == 0) Destroy(gameObject);
     }
     
     void Update()

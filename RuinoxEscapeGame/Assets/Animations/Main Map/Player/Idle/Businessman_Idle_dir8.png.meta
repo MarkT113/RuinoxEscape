@@ -126,10 +126,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 1147
-        width: 40
-        height: 56
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_1
       rect:
         serializedVersion: 2
-        x: 364
-        y: 1147
-        width: 40
-        height: 59
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_2
       rect:
         serializedVersion: 2
-        x: 620
-        y: 1147
-        width: 39
-        height: 56
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_3
       rect:
         serializedVersion: 2
-        x: 876
-        y: 1147
-        width: 42
-        height: 56
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_4
       rect:
         serializedVersion: 2
-        x: 1128
-        y: 1147
-        width: 43
-        height: 56
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +231,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_5
       rect:
         serializedVersion: 2
-        x: 108
-        y: 891
-        width: 39
-        height: 56
+        x: 0
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,10 +252,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_6
       rect:
         serializedVersion: 2
-        x: 364
-        y: 891
-        width: 39
-        height: 56
+        x: 256
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,10 +273,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_7
       rect:
         serializedVersion: 2
-        x: 620
-        y: 888
-        width: 39
-        height: 59
+        x: 512
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +294,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_8
       rect:
         serializedVersion: 2
-        x: 876
-        y: 891
-        width: 39
-        height: 56
+        x: 768
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,10 +315,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_9
       rect:
         serializedVersion: 2
-        x: 1132
-        y: 891
-        width: 39
-        height: 56
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,10 +336,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_10
       rect:
         serializedVersion: 2
-        x: 108
-        y: 635
-        width: 39
-        height: 56
+        x: 0
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -357,10 +357,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_11
       rect:
         serializedVersion: 2
-        x: 364
-        y: 635
-        width: 39
-        height: 56
+        x: 256
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,10 +378,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_12
       rect:
         serializedVersion: 2
-        x: 620
-        y: 635
-        width: 39
-        height: 55
+        x: 512
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -399,10 +399,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_13
       rect:
         serializedVersion: 2
-        x: 876
-        y: 635
-        width: 39
-        height: 55
+        x: 768
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -420,10 +420,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_14
       rect:
         serializedVersion: 2
-        x: 1132
-        y: 635
-        width: 40
-        height: 56
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -441,10 +441,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_15
       rect:
         serializedVersion: 2
-        x: 108
-        y: 379
-        width: 42
-        height: 56
+        x: 0
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -462,10 +462,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_16
       rect:
         serializedVersion: 2
-        x: 360
-        y: 379
-        width: 48
-        height: 59
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -483,10 +483,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_17
       rect:
         serializedVersion: 2
-        x: 620
-        y: 379
-        width: 40
-        height: 56
+        x: 512
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -504,10 +504,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_18
       rect:
         serializedVersion: 2
-        x: 876
-        y: 379
-        width: 42
-        height: 56
+        x: 768
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -525,10 +525,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_19
       rect:
         serializedVersion: 2
-        x: 1132
-        y: 379
-        width: 40
-        height: 59
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -546,10 +546,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_20
       rect:
         serializedVersion: 2
-        x: 108
-        y: 123
-        width: 40
-        height: 56
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -567,10 +567,10 @@ TextureImporter:
       name: Businessman_Idle_dir8_21
       rect:
         serializedVersion: 2
-        x: 360
-        y: 123
-        width: 44
-        height: 56
+        x: 256
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
