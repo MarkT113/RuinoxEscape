@@ -7,13 +7,15 @@ using UnityEngine;
 public class PlayerMovementRunnerLevel : MonoBehaviour
 {
     [SerializeField] private float sensitivity = 10f; // To mimic GetAxis()
-    [SerializeField] private float moveSpeed = 100f;
+    [SerializeField] private float moveSpeed = 50f;
 
     private float horizontalMoveInput;
     private Rigidbody2D rb;
     private Animator playerAnimator;
     private bool moveLeft;
     private bool moveRight;
+    private int countA, countB, countC, countD, countE;
+    private bool finalInput;
 
     void Start()
     {
@@ -27,6 +29,7 @@ public class PlayerMovementRunnerLevel : MonoBehaviour
     {
         //horizontalMoveInput = Input.GetAxis("Horizontal"); // Keyboard movement (disabled as it causes errors)
         if (CollisionManager.Instance.isDead) return;
+        
         if (moveLeft)
             horizontalMoveInput = Mathf.MoveTowards(horizontalMoveInput, -1f, sensitivity * Time.deltaTime);
         else if (moveRight)
@@ -39,7 +42,8 @@ public class PlayerMovementRunnerLevel : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, 0);
+        if (CollisionManager.Instance.isDead) rb.velocity = new Vector2(0, 0);
+        else rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, 0);
     }
 
     public void StartMoveLeft()

@@ -6,7 +6,7 @@ public class ObstacleManager : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Border")
+        if (other.CompareTag("Border"))
             Destroy(gameObject);
     }
 }

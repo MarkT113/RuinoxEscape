@@ -21,6 +21,7 @@ public class CollisionManager : MonoBehaviour
     private float dashTimeLeft; // Time left for the current dash to complete
     private float cooldownTimeLeft; // Time remaining out of the cooldown
     private bool isDashActive; // Is the player currently dashing
+    private int i;
     
     void Awake()
     {
@@ -52,7 +53,7 @@ public class CollisionManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) && dashChargesLeft > 0 && cooldownTimeLeft <= 0) StartDash();
     }
 
-    public void onDashButtonPressed()
+    public void OnDashButtonPressed()
     {
         if (isDead) return;
         if (!isDashActive && dashChargesLeft > 0 && cooldownTimeLeft <= 0) StartDash();
@@ -78,9 +79,13 @@ public class CollisionManager : MonoBehaviour
         dashChargesLeft = maxDashCharges;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (isDashActive) other.GetComponent<Animator>().SetBool("break", true);
+        if (isDashActive)
+        {
+            other.collider.isTrigger = true;
+            other.gameObject.GetComponent<Animator>().SetBool("break", true);
+        }
         else DeathRoutine();
     }
 
@@ -93,23 +98,29 @@ public class CollisionManager : MonoBehaviour
         CameraMovement.cameraSpeed = 0;
         BackgroundMovement.speed = 0;
         obstacleSpawnerPoint.SetActive(false);
-        Button[] allSceneButtons = FindObjectsOfType<Button>();
+
+        //gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        //gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        
+        // Disable all touch/button inputs and their respective event triggers
+        /*Button[] allSceneButtons = FindObjectsOfType<Button>();
         foreach (Button btn in allSceneButtons)
         {
             btn.interactable = false;
             EventTrigger touchInput = btn.GetComponent<EventTrigger>();
             if (touchInput) touchInput.enabled = false;
-        }
+        }*/
+        
         //yield return new WaitForSeconds(6f); // small buffer (wait until animation finishes + time before resetting
                                              // level). Unconventional but efficient (instead of having to find out
                                              // how long the animation clip is)
         //playerAnimator.SetTrigger("die"); // Best method for this case/application as it allows for triggering
                                           // events after / at the end of the animation.
-        //playerAnimator.SetBool("isDead", true);
-        playerAnimator.Play("Die_N");
+        playerAnimator.SetBool("isDead", true);
     }
 
-    private void ResetScene()
+    public void ResetScene()
     {
         PauseMenu.Instance.RestartLevel();
     }
