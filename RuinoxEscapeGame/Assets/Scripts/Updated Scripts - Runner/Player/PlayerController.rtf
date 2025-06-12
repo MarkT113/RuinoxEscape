@@ -1,0 +1,80 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 using System;\
+using System.Collections;\
+using System.Collections.Generic;\
+using UnityEngine.SceneManagement;\
+using UnityEngine;\
+\
+public class PlayerController : MonoBehaviour\
+\{\
+    public PlayerModel playerData;\
+    public PlayerView playerView;\
+\
+    private Rigidbody2D rb;\
+    private Animator playerAnimator;\
+    private horAxisInput;\
+    private float targetInputVal;\
+    private bool moveLeft;\
+    private bool moveRight;\
+\
+    void Awake()\
+    \{\
+        playerData = playerModel.Instance;\
+        horAxisInput = playerData.horizontalMoveInput\
+        targetInputVal = playerData.targetHorVelocity;\
+        rb = GetComponent<Rigidbody2D>();\
+        playerAnimator = GetComponent<Animator>();\
+        rb.freezeRotation = true;\
+        rb.gravityScale = 0f;\
+        x += SavePlayerData;\
+    \}\
+\
+    void Update()\
+    \{\
+        //if (playerData.isDead) return; // Redundant (as \'91Time.timeScale = 0\'92 is used)\
+\
+        targetInputVal = (moveLeft) ? -1f : (moveRight) ? 1f : 0f;\
+        horAxisInput = Mathf.MoveTowards(horAxisInput, targetInputVal, playerData.ControlsSensitivity * Time.deltaTime);\
+\
+        //playerView.MovePlayer(horAxisInput);\
+        playerAnimator.SetFloat("inputX", horAxisInput);\
+    \}\
+\
+    void FixedUpdate()\
+    \{\
+        rb.velocity = new Vector2(horAxisInput * playerData.playerVelocity, 0);\
+    \}\
+\
+    public void StartMoveLeft()\
+    \{\
+        moveLeft = moveRight ? false : true;\
+    \}\
+    \
+    public void EndMoveLeft()\
+    \{\
+        moveLeft = false;\
+    \}\
+    \
+    public void StartMoveRight()\
+    \{\
+        if (!moveLeft)\
+            moveRight = true;\
+    \}\
+\
+    public void EndMoveRight()\
+    \{\
+        moveRight = false;\
+    \}\
+\
+    private void SavePlayerData()\
+    \{\
+        playerData.horizontalMoveInput = horAxisInput;\
+        playerData.targetHorVelocity = targetInputVal;\
+    \}\
+\}}
