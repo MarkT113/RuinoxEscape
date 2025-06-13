@@ -399,6 +399,8 @@
 "Assets/OldProj/Scripts/Managers/UIManager.cs"
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/ChangeScene.cs"
+"Assets/Scripts/Combat Level/BackgroundMover.cs"
+"Assets/Scripts/Combat Level/CameraFollowPlayer.cs"
 "Assets/Scripts/Combat Level/EnemyController.cs"
 "Assets/Scripts/Combat Level/LootBoxController.cs"
 "Assets/Scripts/Combat Level/PlayerController.cs"
