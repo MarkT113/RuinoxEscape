@@ -5,38 +5,29 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/_Project/Scenes/Initialization.unity
-    guid: f4ff6f4e746c74893b60330c5c7c3daf
-  - enabled: 0
-    path: Assets/OldProj/Scenes/LandingPage.unity
-    guid: c5166470d5cb249dea6a792851bfbf30
-  - enabled: 0
-    path: Assets/OldProj/Scenes/MainMap.unity
-    guid: fa616a87e49b5404e9c97316dbde5074
-  - enabled: 0
-    path: Assets/OldProj/Scenes/Minigame1.unity
-    guid: ddd4f241b13ca448d9bcc7eb46e0ffbe
-  - enabled: 0
-    path: Assets/OldProj/Scenes/Minigame2.unity
-    guid: 14b2b619a3bda4e4d862384c87e053b2
-  - enabled: 0
-    path: Assets/OldProj/Scenes/Minigame3.unity
-    guid: 36d9bf6aba14a4526a2260598c8f093a
   - enabled: 1
-    path: Assets/Scenes/Landing.unity
+    path: Assets/Scenes/User-related/Starting.unity
+    guid: aa917189bda35438b966b5d5ebabc905
+  - enabled: 1
+    path: Assets/Scenes/User-related/Signup.unity
+    guid: f8cd1fb8ad6f34b72ba4081dd2e2e178
+  - enabled: 1
+    path: Assets/Scenes/User-related/Login.unity
+    guid: 7aecb3661e97b4a0ba4658a339c4cd7a
+  - enabled: 1
+    path: Assets/Scenes/User-related/Landing.unity
     guid: 0c102da8e626348409ee1f5b236a5c4a
   - enabled: 1
-    path: Assets/Scenes/MainMap.unity
+    path: Assets/Scenes/Levels/MainMap.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
-    path: Assets/Scenes/Platformer.unity
+    path: Assets/Scenes/Levels/Platformer.unity
     guid: 2b4baf422375d48399556f1ef55731d4
   - enabled: 1
-    path: Assets/Scenes/Racing.unity
+    path: Assets/Scenes/Levels/Racing.unity
     guid: c976811060b80413b96345226961b824
   - enabled: 1
-    path: Assets/Scenes/Shooter.unity
+    path: Assets/Scenes/Levels/Shooter.unity
     guid: 22b8d164eb99f47d1b8479bf6b8752a0
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 5efc337f7f77645138ae13e1df84ece3, type: 2}
